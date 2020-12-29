@@ -4,13 +4,16 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.LinearGradient;
 import android.graphics.Paint;
 import android.graphics.RectF;
+import android.graphics.Shader;
 import android.util.AttributeSet;
 import android.view.View;
 
 /**
  * Created by YoungTr on 2017/2/23.
+ * Modified by Quentin on 2020/12/29
  */
 
 public class NumberProgressBar extends View {
@@ -30,6 +33,10 @@ public class NumberProgressBar extends View {
     private int color1;
     private int color2;
     private int color3;
+    private int[] colors = null;
+    private float[] linearGradientPositions = {0f, 0.8f, 1.0f};
+    private Shader.TileMode tile = Shader.TileMode.CLAMP;
+    private LinearGradient linearGradient;
 
     private float mNumberTextSize;
     private float mReachedBarHeight;
@@ -77,6 +84,9 @@ public class NumberProgressBar extends View {
         color1 = attributes.getColor(R.styleable.NumberProgressBar_color1, color1);
         color2 = attributes.getColor(R.styleable.NumberProgressBar_color2, color2);
         color3 = attributes.getColor(R.styleable.NumberProgressBar_color3, color3);
+        if (color2 != 0 && color3 != 0) {
+            colors = new int[]{color1, color2, color3};
+        }
         mReachedBarHeight = attributes.getDimension(R.styleable.NumberProgressBar_reachedBarHeight, mReachedBarHeight);
         mUnreachedBarHeight = attributes.getDimension(R.styleable.NumberProgressBar_unreachedBarHeight, mUnreachedBarHeight);
         mNumberTextSize = attributes.getDimension(R.styleable.NumberProgressBar_numberTextSize, mNumberTextSize);
@@ -170,6 +180,10 @@ public class NumberProgressBar extends View {
 
     private void drawReachedBar(Canvas canvas) {
         if (mIfShapeHorizontal) {
+            if (colors != null) {
+                linearGradient = new LinearGradient(0.0f, 0.0f, getMeasuredWidth(), 0.0f, colors, linearGradientPositions, tile);
+                mReachedBarPaint.setShader(linearGradient);
+            }
             canvas.drawRect(mReachedRecF, mReachedBarPaint);
         } else {
             mReachedBarPaint.setStrokeWidth(mReachedBarHeight);
