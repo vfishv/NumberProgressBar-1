@@ -1,29 +1,19 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.novoda.bintray-release'
+//apply plugin: 'com.novoda.bintray-release'
 buildscript {
     repositories {
 	    google()
         jcenter()
     }
-    dependencies {
-        classpath 'com.novoda:bintray-release:0.4.0'
-    }
 }
 
-publish {
-    userOrg = 'youngtr'
-    groupId = 'com.youngtr'
-    artifactId = 'numberprogress'
-    publishVersion = '1.0.2'
-    website = 'https://github.com/YoungTr/NumberProgressBar'
-}
 android {
     compileSdkVersion 30
-    buildToolsVersion "30.0.2"
+    //buildToolsVersion "30.0.2"
 
     defaultConfig {
         minSdkVersion 8
-        targetSdkVersion 25
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
 
