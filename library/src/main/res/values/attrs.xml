@@ -20,5 +20,9 @@
             <enum name="horizontal" value="0" />
             <enum name="circle" value="1" />
         </attr>
+
+        <attr name="color1" format="color"/>
+        <attr name="color2" format="color"/>
+        <attr name="color3" format="color"/>
     </declare-styleable>
 </resources>

@@ -27,6 +27,10 @@ public class NumberProgressBar extends View {
     private int mUnreachedBarColor;
     private int mNumberTextColor;
 
+    private int color1;
+    private int color2;
+    private int color3;
+
     private float mNumberTextSize;
     private float mReachedBarHeight;
     private float mUnreachedBarHeight;
@@ -70,6 +74,9 @@ public class NumberProgressBar extends View {
         mReachedBarColor = attributes.getColor(R.styleable.NumberProgressBar_reachedBarColor, mReachedBarColor);
         mUnreachedBarColor = attributes.getColor(R.styleable.NumberProgressBar_unreachedBarColor, mUnreachedBarColor);
         mNumberTextColor = attributes.getColor(R.styleable.NumberProgressBar_numberTextColor, mNumberTextColor);
+        color1 = attributes.getColor(R.styleable.NumberProgressBar_color1, color1);
+        color2 = attributes.getColor(R.styleable.NumberProgressBar_color2, color2);
+        color3 = attributes.getColor(R.styleable.NumberProgressBar_color3, color3);
         mReachedBarHeight = attributes.getDimension(R.styleable.NumberProgressBar_reachedBarHeight, mReachedBarHeight);
         mUnreachedBarHeight = attributes.getDimension(R.styleable.NumberProgressBar_unreachedBarHeight, mUnreachedBarHeight);
         mNumberTextSize = attributes.getDimension(R.styleable.NumberProgressBar_numberTextSize, mNumberTextSize);
